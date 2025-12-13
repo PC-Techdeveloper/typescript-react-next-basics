@@ -11,6 +11,7 @@ import {
 } from 'react';
 import { ComponentPropsWithRef, MouseEvent } from 'react';
 import Hello from './hello';
+import Generic from './generic';
 
 //union types
 type Color = 'red' | 'blue' | 'green' | 'yellow' | 'purple';
@@ -132,9 +133,12 @@ function Page() {
   // const [count, setCount] = useState<number>(0)
 
   return (
-    <div>
-      <Hello />
-    </div>
+    <section>
+      <h1 className="text-2xl font-bold text-red-300">
+        Curso de Next JS + TypeScript
+      </h1>
+      <Generic />
+    </section>
   );
 }
 
