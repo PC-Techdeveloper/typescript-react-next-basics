@@ -1,6 +1,6 @@
 {
   // editor
-  "editor.fontSize": 13,
+  "editor.fontSize": 12,
   "editor.fontFamily": "Cascadia Code",
   "editor.fontLigatures": true,
   "editor.wordWrap": "on",
@@ -45,7 +45,7 @@
   "window.zoomLevel": 1.8,
   "files.autoSave": "afterDelay",
   "prettier.arrowParens": "avoid",
-  "prettier.semi": false,
+  "prettier.semi": true,
   "prettier.singleQuote": true,
   "prettier.enable": true,
   "prettier.bracketSpacing": true,
@@ -139,6 +139,6 @@
   "workbench.layoutControl.enabled": false,
   "editor.experimental.stickyScroll.enable": true,
   "workbench.colorCustomizations": {},
-  "workbench.colorTheme": "One Dark Pro Mix",
-  "editor.lineHeight": 15
+  "workbench.colorTheme": "One Dark Pro",
+  "editor.lineHeight": 17
 }
