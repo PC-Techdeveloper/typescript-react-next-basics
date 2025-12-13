@@ -1,87 +1,131 @@
 //indica que el componente es del lado del cliente
-'use client'
-import { ComponentProps, Dispatch, JSX, SetStateAction, useState } from 'react'
+'use client';
+import {
+  ComponentProps,
+  Dispatch,
+  JSX,
+  SetStateAction,
+  useEffect,
+  useState,
+  useRef,
+} from 'react';
+import { ComponentPropsWithRef, MouseEvent } from 'react';
+import Hello from './hello';
 
 //union types
-type Color = 'red' | 'blue' | 'green' | 'yellow' | 'purple'
+type Color = 'red' | 'blue' | 'green' | 'yellow' | 'purple';
 //props
 type ButtonProps = {
-  text: string
-  subtitle?: string
-  color?: Color
-  backgroundColor?: Color
-}
+  text: string;
+  subtitle?: string;
+  color?: Color;
+  backgroundColor?: Color;
+};
 
 //arrays
 type ButtonArrayProps = {
-  padding: [number, number, number]
-}
+  padding: [number, number, number];
+};
 
 //css properties: propiedades de CSS
 type ButtonCSSProps = {
-  style: React.CSSProperties
-}
+  style: React.CSSProperties;
+};
 
 //record types
 type UserAges = {
-  userAges: Record<'Alice' | 'Bob' | 'Jose', number>
-}
+  userAges: Record<'Alice' | 'Bob' | 'Jose', number>;
+};
 
 //type functions
 type ButtonFunctionProps = {
-  onClick: () => void //no retorna nada
-}
+  onClick: () => void; //no retorna nada
+};
 
 //reactNode vs JSX.Element
 //reactNode ejecuta cualquier tipo de elemento
 // JSX.Element solo ejecuta elementos de React
 type ButtonChildrenProps = {
-  children: JSX.Element | React.ReactNode
-}
+  children: JSX.Element | React.ReactNode;
+};
 
 //uso de setters
 type ButtonSetterProps = {
-  setCount: Dispatch<SetStateAction<number>>
-  children: React.ReactNode
-}
+  setCount: Dispatch<SetStateAction<number>>;
+  children: React.ReactNode;
+};
 
 //default props
 type ButtonDefaultProps = {
-  title?: string
-  count?: number
-}
+  title?: string;
+  count?: number;
+};
 
 //alias vs interfaces
 interface ButtonPropsInterface {
-  title?: string
-  count?: number
+  title?: string;
+  count?: number;
 }
 
-type Domain = string
+type Domain = string;
 /* ❌ */
 // interface Domain = string
 interface MyDomain {
-  domain: string
+  domain: string;
 }
 //tipado de props en componentes
-type ButtonPropsComponent = ComponentProps<'button'>
+type ButtonPropsComponent = ComponentProps<'button'>;
 
-//intersection y extends 🟡
+//intersection y extends
+interface Props extends ComponentPropsWithRef<'button'> {}
+
+// interface ButtonPropsExtends extends Props {
+//   url: string
+// }
+
+type User = {
+  name: string;
+  age: number;
+  email: string;
+  password: string;
+};
+//utility types
+type UserWithoutPassword = Omit<User, 'password' | 'email'>;
+
+type UpdateUser = Partial<User>;
+
+type UserPublicData = Pick<User, 'name' | 'email'>;
+
+type OptionalUserWithoutPassoword = Partial<Omit<User, 'password'>>;
+
+type Status = 'active' | 'inactive' | 'pending' | 'deleted' | 'blocked';
+
+type AllowedStatus = Exclude<Status, 'inactive' | 'pending'>;
 
 /* spread operator */
-function Button({ onClick, ...rest }: ButtonPropsComponent) {
-  // manejador de eventos
-  const handleClick = () => {
-    if (onClick) {
-      alert('clicked')
-    }
-  }
+function Button({}: Props) {
+  // event handlers
+  // const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {}
+  // function handleClick(e: MouseEvent<HTMLElement, globalThis.MouseEvent>) {
+  //   console.log(e);
+  // }
 
-  return (
-    <button onClick={handleClick} {...rest}>
-      Button
-    </button>
-  )
+  //tipado de hooks
+  // const [count, setCount] = useState(0);
+  // const [text, setText] = useState('Button');
+  // const [active, setActive] = useState(false);
+
+  const [user, setUser] = useState<User | null>(null);
+  const myButton = useRef<HTMLButtonElement>(null);
+
+  const sendData = () => {
+    const user: UserWithoutPassword = {
+      name: 'name',
+      age: 30,
+    };
+    return;
+  };
+  return <button ref={myButton}>Button</button>;
 }
 
 function Page() {
@@ -89,12 +133,12 @@ function Page() {
 
   return (
     <div>
-      <Button onClick={() => console.log('Alert')}>Button</Button>
+      <Hello />
     </div>
-  )
+  );
 }
 
-export default Page
+export default Page;
 
 /* 
 const Button: React.FC<ButtonProps> = (props) => {
