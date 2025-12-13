@@ -1,6 +1,6 @@
 {
   // editor
-  "editor.fontSize": 12,
+  "editor.fontSize": 13,
   "editor.fontFamily": "Cascadia Code",
   "editor.fontLigatures": true,
   "editor.wordWrap": "on",
@@ -135,10 +135,10 @@
   "editor.suggest.showFunctions": true,
   "editor.suggest.showVariables": true,
   "rapidapi.terminalLink.enabled": false,
-  "workbench.sideBar.location": "right",
+  "workbench.sideBar.location": "left",
   "workbench.layoutControl.enabled": false,
   "editor.experimental.stickyScroll.enable": true,
-  "oneDarkPro.vivid": true,
   "workbench.colorCustomizations": {},
-  "workbench.colorTheme": "One Dark Pro Darker"
+  "workbench.colorTheme": "One Dark Pro Mix",
+  "editor.lineHeight": 15
 }
