@@ -20,7 +20,11 @@
     "@types/react-dom": "19",
     "eslint": "9",
     "eslint-config-next": "16.0.10",
+    "standard": "17.1.2",
     "tailwindcss": "4",
     "typescript": "5"
+  },
+  "eslintConfig": {
+    "extends": "standard"
   }
 }
