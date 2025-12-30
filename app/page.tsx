@@ -126,7 +126,7 @@ function Button({}: Props) {
     };
     return;
   };
-  return <button ref={myButton}>Button</button>;
+  return <button ref={myButton}>Hola soy un botón</button>;
 }
 
 function Page() {
